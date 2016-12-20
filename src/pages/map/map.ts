@@ -20,7 +20,7 @@ export  class MapPage{
     this.map = new BMap.Map(this.mapElement.nativeElement);          // 创建地图实例
     this.map = new BMap.Map(this.mapElement.nativeElement ,{minZoom:4,maxZoom:25});          // 创建地图实例
 
-    var point = new BMap.Point(116.404, 39.915);  // 创建点坐标
+    // var point = new BMap.Point(116.404, 39.915);  // 创建点坐标
     //this.map.centerAndZoom(point, 15);                 // 初始化地图，设置中心点坐标和地图级别
     this.map.centerAndZoom("北京",15);
     this.map.addControl(new BMap.NavigationControl());

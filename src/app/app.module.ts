@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import {MapPage} from "../pages/map/map";
 import {EventListPage} from "../pages/event-list/event-list";
+import {SqliteService} from "../providers/sqlite";
 
 @NgModule({
   declarations: [
@@ -31,6 +32,6 @@ import {EventListPage} from "../pages/event-list/event-list";
     MapPage,
     EventListPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},SqliteService]
 })
 export class AppModule {}
