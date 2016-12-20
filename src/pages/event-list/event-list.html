@@ -1,0 +1,17 @@
+<ion-header>
+   <ion-navbar>
+     <button menuToggle="left">
+       <ion-icon name="menu"></ion-icon>
+     </button>
+  </ion-navbar>
+</ion-header>
+<ion-title> 事件列表</ion-title>
+
+<ion-content padding>
+<ion-list *ngFor="let event of myEvents">
+<ion-item style="height:25px">
+  <ion-icon name="{{event.iconName}}"></ion-icon>
+  {{event.theme}}+"----"+{{event.iconName}}
+</ion-item>
+</ion-list>
+</ion-content>
