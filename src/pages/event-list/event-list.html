@@ -1,26 +1,17 @@
-<ion-title>Hello</ion-title>
 <ion-header>
-   <ion-navbar>
-     <button menuToggle>
-       <ion-icon name="menu" icon-left></ion-icon>
-     </button>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+      <button ion-button (click)="query()" color="primary">Refresh</button>
+      <button ion-button (click)="query2()" color="primary">HaHa</button>
   </ion-navbar>
 </ion-header>
-<ion-title> 事件列表</ion-title>
 
 <ion-content padding>
-<ion-list *ngFor="let event of myEvents">
-<ion-item>
-  <ion-icon name="{{event.iconName}}"></ion-icon>
-  {{event.theme}}+"----"+{{event.iconName}}
-</ion-item>
-</ion-list>
-  <button ion-button (click)="insertData()" color="primary">增加记录</button>
-  <div *ngIf="people" style="height: 100px;width: 100px;background-color: #2b81af">
-  <ion-list *ngFor="let peo of pepole">
-    <ion-item>
-      {{peo.firstname}}
+  <ion-list>
+    <ion-item *ngFor="let person of people">
+      {{person.name}}
     </ion-item>
   </ion-list>
-  </div>
 </ion-content>

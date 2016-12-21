@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import {NavController, NavParams, AlertController} from 'ionic-angular';
-import {EventModel} from "./EventModel";
-import {SqliteService} from "../../providers/sqlite";
+import {NavController,AlertController} from 'ionic-angular';
+import {SQLite} from "ionic-native";
+import {EventSqliteProvider} from "../../providers/event-list/event-sqlite-provider";
+import {SQLiteConfig} from "../../providers/sqlite-config";
 
 /*
   Generated class for the EventList page.
@@ -10,32 +11,45 @@ import {SqliteService} from "../../providers/sqlite";
   Ionic pages and navigation.
 */
 @Component({
-  selector: 'page-event-list',
   templateUrl: 'event-list.html'
 })
 export class EventListPage {
- title:string ="事件列表";
- pepole:Array<Object>;
-  myEvents:any=new Array<EventModel>();
-  constructor(public navCtrl: NavController, public navParams: NavParams,public  dbServie:SqliteService,public alertCtl:AlertController) {
-    this.myEvents.push({theme:"测试1",iconName:"home",checked:false} as EventModel);
-    this.myEvents.push({theme:"测试2",iconName:"home",checked:false} as EventModel);
-    this.myEvents.push({theme:"测试3",iconName:"home",checked:false} as EventModel);
-    this.myEvents.push({theme:"测试4",iconName:"home",checked:false} as EventModel);
-    this.myEvents.push({theme:"测试5",iconName:"home",checked:false} as EventModel);
+  public database: SQLite;
+  public people:any=new Array();
+  constructor(private navController: NavController,public dbProvider:EventSqliteProvider,public alertCtl:AlertController) {
+    this.people.push({name:"fdfdf"});
+    this.dbProvider.db.openDatabase(SQLiteConfig).then(()=>{
+      this.dbProvider.db.executeSql("insert into danceMoves values('111')",[]);
+    })
   }
-  insertData(){
-    this.dbServie.queryPepole().then((data)=>{
-      this.pepole=data;
-    });
-    this.alertCtl.create({
-      title:"red",
-      subTitle:"fdfdf",
-      message:this.pepole.length.toString()
-    });
-}
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EventListPage');
-  }
+ query(){
+    this.dbProvider.db.openDatabase(SQLiteConfig).then(()=>{
+      this.dbProvider.db.executeSql("insert into danceMoves(name) values('woshiyigebing')",[]).then((tt)=>{
+         this.dbProvider.db.executeSql("select * from  danceMoves",[]).then((data)=>{
+           console.error(data);
+          this.people.push({name:data.rows.item(0).name})
 
+        },(error2)=>{
+
+         })
+      },(erro1)=>{
+
+      })
+    });
+
+ }
+  query2(){
+    this.dbProvider.query().then((data)=>{
+      this.people.push(data)
+      this.alertCtl.create({
+        title:"aler",
+        message:data
+      }).present()
+    },(erro)=>{
+      this.alertCtl.create({
+        title:"alerErro",
+        message:erro
+      }).present()
+    })
+  }
 }
