@@ -7,7 +7,17 @@
 </ion-header>
 
 <ion-content>
+    <!--<button ion-item *ngFor="let p of pages" (click)="openPage(p)" color="secondary">-->
+
+  <button  ion-button color="primary"  (click)="query()">查询</button>
   <ion-list>
+    <button ion-button color="primary" (click)="insert()">新增</button>
+    <ion-list *ngFor="let task of dataSet">
+      <ion-item >
+        <ion-icon  item-left></ion-icon>
+        任务名称:{{task.taskName}}
+      </ion-item>
+    </ion-list>
     <ion-list-header>Follow us on Twitter</ion-list-header>
     <ion-item>
       <ion-icon name="ionic" item-left></ion-icon>

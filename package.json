@@ -1,7 +1,7 @@
 {
-  "name": "ionic-hello-world",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "name": "ionic2-life-start",
+  "author": "amc_lap@163.com",
+  "homepage": "http://www.anmingchao.cn",
   "private": true,
   "scripts": {
     "ionic:build": "ionic-app-scripts build",
