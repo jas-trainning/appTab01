@@ -8,6 +8,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import {MapPage} from "../pages/map/map";
 import {EventListPage} from "../pages/event-list/event-list";
 import { EventSqliteProvider} from "../providers/event-list/event-sqlite-provider";
+import {TaskSqliteProvider} from "../providers/tasks/task-sqlite-provider";
 
 @NgModule({
   declarations: [
@@ -32,6 +33,6 @@ import { EventSqliteProvider} from "../providers/event-list/event-sqlite-provide
     MapPage,
     EventListPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},EventSqliteProvider]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},TaskSqliteProvider,EventSqliteProvider]
 })
 export class AppModule {}

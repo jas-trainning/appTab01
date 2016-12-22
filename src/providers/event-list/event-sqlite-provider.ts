@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import {SQLite} from "ionic-native";
 import {SQLiteConfig} from "../sqlite-config";
-
-
 @Injectable()
 export class EventSqliteProvider {
    db:SQLite;
